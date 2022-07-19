@@ -1,22 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ContactsList } from 'components/ContatsList/ContacstsList';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import { nanoid } from 'nanoid';
 import { Filter } from 'components/Filter/Filter';
 import { ContactsTitle } from 'components/ContactsTitle/ContactsTitle';
 import { Box } from 'components/Box/Box';
-
-const localStorage_key = 'contacts';
+import { useLocalStorage } from './huks/localStorageSave';
 
 function App() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem(localStorage_key)) ?? []
-  );
+  const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    window.localStorage.setItem(localStorage_key, JSON.stringify(contacts));
-  }, [contacts]);
 
   const getFiltredContact = () => {
     const lowerCasedFilter = filter.toLowerCase();
