@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { Filter } from 'components/Filter/Filter';
 import { ContactsTitle } from 'components/ContactsTitle/ContactsTitle';
 import { Box } from 'components/Box/Box';
-import { useLocalStorage } from './huks/localStorageSave';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
   const [contacts, setContacts] = useLocalStorage('contacts', []);

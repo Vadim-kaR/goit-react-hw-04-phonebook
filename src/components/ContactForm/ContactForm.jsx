@@ -5,24 +5,24 @@ import { Box } from 'components/Box/Box';
 import { InputTitle, InputField, AddBtn } from './ContactForm.styled';
 import * as yup from 'yup';
 
-let schema = yup.object().shape({
-  name: yup
-    .string()
-    .required()
-    .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      'name may contain only letters'
-    ),
-  number: yup
-    .string()
-    .required()
-    .matches(
-      /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
-      'Phone number is not valid'
-    ),
-});
-
 const ContactForm = ({ onSubmit }) => {
+  let schema = yup.object().shape({
+    name: yup
+      .string()
+      .required()
+      .matches(
+        /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+        'name may contain only letters'
+      ),
+    number: yup
+      .string()
+      .required()
+      .matches(
+        /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
+        'Phone number is not valid'
+      ),
+  });
+
   return (
     <Formik
       initialValues={{
